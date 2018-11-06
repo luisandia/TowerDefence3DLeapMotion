@@ -1,34 +1,32 @@
-﻿
-using UnityEngine;
+﻿using UnityEngine;
 
 public class BuildManager : MonoBehaviour {
 
-	//singleton
 	public static BuildManager instance;
 
-	void Awake() {
-		if (instance != null){
+	void Awake ()
+	{
+		if (instance != null)
+		{
 			Debug.LogError("More than one BuildManager in scene!");
+			return;
 		}
-		instance = this;	
-	} 
-	public GameObject standartTurretPrefab;
+		instance = this;
+	}
+
+	public GameObject standardTurretPrefab;
+	public GameObject anotherTurretPrefab;
 
 	private GameObject turretToBuild;
 
-	public GameObject GetTurretToBuild(){
+	public GameObject GetTurretToBuild ()
+	{
 		return turretToBuild;
 	}
 
-
-
-	// Use this for initialization
-	void Start () {
-		turretToBuild=standartTurretPrefab;
+	public void SetTurretToBuild (GameObject turret)
+	{
+		turretToBuild = turret;
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
 }
