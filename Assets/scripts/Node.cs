@@ -1,6 +1,13 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
+using Leap.Unity.Interaction;
+using System.Collections;
+using System.Collections.Generic;
 
+
+using System;
+
+[AddComponentMenu("")]
 public class Node : MonoBehaviour {
 
 	public Color hoverColor;
@@ -19,9 +26,33 @@ public class Node : MonoBehaviour {
 		startColor = rend.material.color;
 
 		buildManager = BuildManager.instance;
+		PhysicsCallbacks.OnPostPhysics += OnPostPhysics;
+
     }
 
-	void OnMouseDown ()
+    private void OnPostPhysics()
+    {
+        InteractionBehaviour intObjEnemy =  gameObject.GetComponent<InteractionBehaviour>();
+		if(intObjEnemy.isPrimaryHovered){
+			
+			if (EventSystem.current.IsPointerOverGameObject())
+				return;
+
+			if (buildManager.GetTurretToBuild() == null)
+				return;
+
+			if (turret != null)
+			{
+				Debug.Log("Can't build there! - TODO: Display on screen.");
+				return;
+			}
+
+			GameObject turretToBuild = buildManager.GetTurretToBuild();
+			turret = (GameObject)Instantiate(turretToBuild, transform.position + positionOffset, transform.rotation);
+		}
+    }
+
+    void OnMouseDown ()
 	{
 		if (EventSystem.current.IsPointerOverGameObject())
 			return;
