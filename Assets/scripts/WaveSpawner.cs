@@ -1,47 +1,58 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using UnityEngine.Networking;
+public class WaveSpawner : NetworkBehaviour
+{
 
-public class WaveSpawner : MonoBehaviour {
+    public Transform enemyPrefab;
 
-	public Transform enemyPrefab;
+    public Transform spawnPoint;
 
-	public Transform spawnPoint;
+    public float timeBetweenWaves = 5f;
+    private float countdown = 2f;
 
-	public float timeBetweenWaves = 5f;
-	private float countdown = 2f;
+    public Text waveCountdownText;
 
-	public Text waveCountdownText;
+    private int waveIndex = 0;
 
-	private int waveIndex = 0;
+    BuildManager buildManager;
 
-	void Update ()
-	{
-		if (countdown <= 0f)
-		{
-			StartCoroutine(SpawnWave());
-			countdown = timeBetweenWaves;
-		}
+    void Start()
+    {
+        buildManager = BuildManager.instance;
 
-		countdown -= Time.deltaTime;
+    }
+    void Update()
+    {
+        if (buildManager.startGame)
+        {
+            if (countdown <= 0f)
+            {
+                StartCoroutine(SpawnWave());
+                countdown = timeBetweenWaves;
+            }
 
-		waveCountdownText.text = Mathf.Round(countdown).ToString();
-	}
+            countdown -= Time.deltaTime;
 
-	IEnumerator SpawnWave ()
-	{
-		waveIndex++;
+            waveCountdownText.text = Mathf.Round(countdown).ToString();
+        }
+    }
 
-		for (int i = 0; i < waveIndex; i++)
-		{
-			SpawnEnemy();
-			yield return new WaitForSeconds(0.5f);
-		}
-	}
+    IEnumerator SpawnWave()
+    {
+        waveIndex++;
 
-	void SpawnEnemy ()
-	{
-		Instantiate(enemyPrefab, spawnPoint.position, spawnPoint.rotation);
-	}
+        for (int i = 0; i < waveIndex; i++)
+        {
+            SpawnEnemy();
+            yield return new WaitForSeconds(0.5f);
+        }
+    }
+
+    void SpawnEnemy()
+    {
+        Instantiate(enemyPrefab, spawnPoint.position, spawnPoint.rotation);
+    }
 
 }

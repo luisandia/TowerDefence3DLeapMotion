@@ -20,6 +20,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4874165002203320}
   - component: {fileID: 114071444544954566}
+  - component: {fileID: 114759568992770838}
+  - component: {fileID: 114721143306100996}
   m_Layer: 0
   m_Name: AnotherTurret
   m_TagString: Untagged
@@ -266,3 +268,56 @@ MonoBehaviour:
   bulletPrefab: {fileID: 1961315286111736, guid: c32c35b7cc6c97041b8ab8489af3b853,
     type: 2}
   firePoint: {fileID: 4764697756310744}
+--- !u!114 &114721143306100996
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1372384284841922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1768714887, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TransformSyncMode: 1
+  m_SendInterval: 0.1
+  m_SyncRotationAxis: 7
+  m_RotationSyncCompression: 0
+  m_SyncSpin: 0
+  m_MovementTheshold: 0.001
+  m_VelocityThreshold: 0.0001
+  m_SnapThreshold: 5
+  m_InterpolateRotation: 1
+  m_InterpolateMovement: 1
+--- !u!114 &114759568992770838
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1372384284841922}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 64
+    i1: 68
+    i2: 127
+    i3: 115
+    i4: 6
+    i5: 152
+    i6: 120
+    i7: 148
+    i8: 9
+    i9: 208
+    i10: 76
+    i11: 96
+    i12: 157
+    i13: 143
+    i14: 238
+    i15: 122
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0

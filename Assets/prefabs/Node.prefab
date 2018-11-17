@@ -23,9 +23,11 @@ GameObject:
   - component: {fileID: 23148292974771690}
   - component: {fileID: 65859816654631276}
   - component: {fileID: 114284700776322590}
+  - component: {fileID: 114656292420158250}
+  - component: {fileID: 114428897345398834}
   m_Layer: 0
   m_Name: Node
-  m_TagString: Untagged
+  m_TagString: Nodo
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -36,8 +38,8 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1678868172868842}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 69.2, y: 0, z: 60.08}
   m_LocalScale: {x: 4, y: 1, z: 4}
   m_Children: []
   m_Father: {fileID: 0}
@@ -103,10 +105,67 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1678868172868842}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f87509f467976b049834209ca7250567, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   hoverColor: {r: 0.7264151, g: 0.6982969, b: 0.66131186, a: 0}
   positionOffset: {x: 0, y: 0.5, z: 0}
+  turrets: []
+  turretToBuild: {fileID: 1372384284841922, guid: 0003298d58c22bd4f91bcb409cc1a9fb,
+    type: 2}
+  Nodes: []
+--- !u!114 &114428897345398834
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1678868172868842}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -1768714887, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_TransformSyncMode: 1
+  m_SendInterval: 0.1
+  m_SyncRotationAxis: 7
+  m_RotationSyncCompression: 0
+  m_SyncSpin: 0
+  m_MovementTheshold: 0.001
+  m_VelocityThreshold: 0.0001
+  m_SnapThreshold: 5
+  m_InterpolateRotation: 1
+  m_InterpolateMovement: 1
+--- !u!114 &114656292420158250
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1678868172868842}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 143
+    i1: 52
+    i2: 3
+    i3: 227
+    i4: 144
+    i5: 128
+    i6: 65
+    i7: 84
+    i8: 72
+    i9: 37
+    i10: 135
+    i11: 32
+    i12: 237
+    i13: 201
+    i14: 246
+    i15: 39
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0

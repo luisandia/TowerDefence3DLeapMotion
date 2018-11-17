@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
-
-public class Turret : MonoBehaviour {
+using UnityEngine.Networking;
+public class Turret : NetworkBehaviour {
 
 	private Transform target;
 
@@ -53,6 +53,8 @@ public class Turret : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+		// if (!isLocalPlayer) return;
+		
 		if (target == null)
 			return;
 
