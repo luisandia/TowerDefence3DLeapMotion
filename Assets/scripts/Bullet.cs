@@ -1,7 +1,11 @@
 using UnityEngine;
 
-public class Bullet : MonoBehaviour {
+// public class Bullet : using UnityEngine;
+using UnityEngine.Networking;
 
+public class Bullet : NetworkBehaviour {
+	
+	[SyncVar]
 	private Transform target;
 
 	public float speed = 70f;
@@ -26,15 +30,22 @@ public class Bullet : MonoBehaviour {
 
 		if (dir.magnitude <= distanceThisFrame)
 		{
-			HitTarget();
+			CmdHitTarget();
 			return;
 		}
 
 		transform.Translate(dir.normalized * distanceThisFrame, Space.World);
+		// transform.Translate(dir.normalized * 50, Space.World);
+
+        // GameObject bullet = Instantiate(bulletPrebab, bulletSpawn.transform.position, bulletSpawn.transform.rotation);
+        // bullet.GetComponent<Rigidbody>().AddForce(bulletSpawn.transform.forward * 2000);
+        // this.velocity = bulletSpawn.transform.forward * 50;
+
 
 	}
 
-	void HitTarget ()
+	// [Command]
+	void CmdHitTarget ()
 	{
 		GameObject effectIns = (GameObject)Instantiate(impactEffect, transform.position, transform.rotation);
 		Destroy(effectIns, 2f);

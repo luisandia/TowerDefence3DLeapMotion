@@ -24,13 +24,22 @@ public class FireControl : NetworkBehaviour
         }
     }
 
-
-  
+      void OnCollisionEnter(Collision collision)
+    {
+        Debug.Log("colision firecontrol");
+        Debug.Log(collision.gameObject.name);
+        // if (collision.gameObject.tag == "Bullet")
+        // {
+        //     Debug.Log("Enemyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy");
+        //     Destroy(collision.gameObject);
+        //     // CmdChangeHealth(-5);
+        // }
+    }
     void createBullet()
     {
         GameObject bullet = Instantiate(bulletPrebab, bulletSpawn.transform.position, bulletSpawn.transform.rotation);
         // bullet.GetComponent<Rigidbody>().AddForce(bulletSpawn.transform.forward * 2000);
-        bullet.GetComponent<Rigidbody>().velocity = bulletSpawn.transform.forward * 50;
+        bullet.GetComponent<Rigidbody>().velocity = bulletSpawn.transform.forward * 100;
         // NetworkServer.Spawn(bullet);
         Destroy(bullet, 3.5f);
     }

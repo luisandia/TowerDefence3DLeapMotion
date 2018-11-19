@@ -5,15 +5,16 @@ using UnityEngine.Networking;
 public class WaveSpawner : NetworkBehaviour
 {
 
-    public Transform enemyPrefab;
+    public GameObject enemyPrefab;
 
-    public Transform spawnPoint;
+    public GameObject spawnPoint;
 
     public float timeBetweenWaves = 5f;
     private float countdown = 2f;
 
     public Text waveCountdownText;
 
+    [SyncVar]
     private int waveIndex = 0;
 
     BuildManager buildManager;
@@ -35,7 +36,7 @@ public class WaveSpawner : NetworkBehaviour
 
             countdown -= Time.deltaTime;
 
-            waveCountdownText.text = Mathf.Round(countdown).ToString();
+            // waveCountdownText.text = Mathf.Round(countdown).ToString();
         }
     }
 
@@ -45,14 +46,15 @@ public class WaveSpawner : NetworkBehaviour
 
         for (int i = 0; i < waveIndex; i++)
         {
-            SpawnEnemy();
+            CmdSpawnEnemy();
             yield return new WaitForSeconds(0.5f);
         }
     }
-
-    void SpawnEnemy()
+    [Command]
+    void CmdSpawnEnemy()
     {
-        Instantiate(enemyPrefab, spawnPoint.position, spawnPoint.rotation);
+        GameObject obj = Instantiate(enemyPrefab, spawnPoint.transform.position, spawnPoint.transform.rotation);
+        NetworkServer.Spawn(obj);
     }
 
 }

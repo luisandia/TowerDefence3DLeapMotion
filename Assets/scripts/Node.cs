@@ -17,9 +17,9 @@ public class Node : NetworkBehaviour
 
     BuildManager buildManager;
     public GameObject turretToBuild;
-	public GameObject [] Nodes;
-	// public List<GameObject> items;
-	GameObject obj;
+    public GameObject[] Nodes;
+    // public List<GameObject> items;
+    GameObject obj;
     void Start()
     {
         // rend = GetComponent<Renderer>();
@@ -31,16 +31,16 @@ public class Node : NetworkBehaviour
 
     void OnMouseDown()
     {
-        Ray ray = Camera.main.ScreenPointToRay( Input.mousePosition );
-         RaycastHit hit;
-         
-			 
-         if( Physics.Raycast( ray, out hit, 100 ) )
-         {
-			 Debug.Log("hice un clickkkkkkkk");
-			 obj= hit.transform.gameObject;
-             Debug.Log( hit.transform.gameObject );
-         }
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+
+
+        if (Physics.Raycast(ray, out hit, 100))
+        {
+            Debug.Log("hice un clickkkkkkkk");
+            obj = hit.transform.gameObject;
+            Debug.Log(hit.transform.gameObject);
+        }
 
         // if (!isLocalPlayer) return;
         // GameObject turretToBuild = buildManager.GetTurretToBuild();
@@ -53,11 +53,12 @@ public class Node : NetworkBehaviour
             Debug.Log("No tiene autoridad");
             Debug.Log(isLocalPlayer);
         }
-		// this.AssignClientAuthority(player.connectionToClient);
+        // this.AssignClientAuthority(player.connectionToClient);
         // CmdCreateTurret();
         // assignAuthorityObj.GetComponent<NetworkIdentity>().AssignClientAuthority(this.GetComponent<NetworkIdentity>().connectionToClient);
 
     }
+
     void createTurret()
     {
         buildManager = BuildManager.instance;
@@ -81,15 +82,18 @@ public class Node : NetworkBehaviour
         Debug.Log("Creando turret");
         // GameObject turretToBuild = buildManager.GetTurretToBuild();
         turret = (GameObject)Instantiate(turretToBuild, transform.position + positionOffset, transform.rotation);
+        NetworkServer.Spawn(turret);
+        // if(hasAuthority)
+        // NetworkServer.SpawnWithClientAuthority(turret,base.connectionToClient);
+        // else {
+        //     Debug.Log("Networkserverclienth autorithy false");
+        // }
 
-	
-
-		
     }
     [ClientRpc]
     void RpcCreateTurret()
     {
-        // if (!isServer)
+        if (!isServer)
         {
 
             createTurret();
@@ -101,7 +105,7 @@ public class Node : NetworkBehaviour
     void CmdCreateTurret()
     {
 
-
+        createTurret();
 
         RpcCreateTurret();
     }
@@ -147,41 +151,43 @@ public class Node : NetworkBehaviour
         if (Input.GetKeyDown("p"))
         {
             Debug.Log("Aprete p");
-            
+
             CmdCreateTurret();
         }
     }
 
-    
 
-	/// TRIGGER ZONE START///
 
-	public void OnTriggerStay(Collider other)
-	{
-	
-	CmdSetAuthority(other.GetComponent<NetworkIdentity>(), this.GetComponent<NetworkIdentity>());
+    /// TRIGGER ZONE START///
 
-	}
+    public void OnTriggerStay(Collider other)
+    {
 
-	public void OnTriggerExit(Collider other)
-	{
-	
-	CmdRemoveAuthority(other.GetComponent<NetworkIdentity>(), this.GetComponent<NetworkIdentity>());
+        CmdSetAuthority(other.GetComponent<NetworkIdentity>(), this.GetComponent<NetworkIdentity>());
 
-	}
-		
+    }
 
-	/// ASSIGN AND REMOVE CLIENT AUTHORITY///
+    public void OnTriggerExit(Collider other)
+    {
 
-	[Command]
-	void CmdSetAuthority (NetworkIdentity grabID, NetworkIdentity playerID) {
-		grabID.AssignClientAuthority (playerID.connectionToClient);
-	}
+        CmdRemoveAuthority(other.GetComponent<NetworkIdentity>(), this.GetComponent<NetworkIdentity>());
 
-	[Command]
-	void CmdRemoveAuthority (NetworkIdentity grabID, NetworkIdentity playerID) {
-		grabID.RemoveClientAuthority (playerID.connectionToClient);
-	}
+    }
+
+
+    /// ASSIGN AND REMOVE CLIENT AUTHORITY///
+
+    [Command]
+    void CmdSetAuthority(NetworkIdentity grabID, NetworkIdentity playerID)
+    {
+        grabID.AssignClientAuthority(playerID.connectionToClient);
+    }
+
+    [Command]
+    void CmdRemoveAuthority(NetworkIdentity grabID, NetworkIdentity playerID)
+    {
+        grabID.RemoveClientAuthority(playerID.connectionToClient);
+    }
 
 
 }

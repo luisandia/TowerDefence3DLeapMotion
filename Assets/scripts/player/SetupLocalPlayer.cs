@@ -16,7 +16,7 @@ public class SetupLocalPlayer : NetworkBehaviour
     public Slider healthPrebab;
     public Slider health;
     public GameObject explosion;
-    public GameObject [] Nodes;
+    public GameObject[] Nodes;
     NetworkStartPosition[] spawnPos;
 
     [SyncVar]
@@ -141,6 +141,14 @@ public class SetupLocalPlayer : NetworkBehaviour
 
 
 
+    [Command]
+    public void CmdUpdatePlayerCharacter(int cid)
+    {
+        NetworkManager.singleton.GetComponent<CustomNetworkManager>().SwitchPlayer(this, cid);
+    }
+
+
+
 
     void OnGUI()
     {
@@ -150,6 +158,13 @@ public class SetupLocalPlayer : NetworkBehaviour
             if (GUI.Button(new Rect(130, 15, 35, 25), "Set"))
                 CmdChangeName(textboxname);
 
+
+           if (Event.current.Equals(Event.KeyboardEvent("0")) ||
+                            Event.current.Equals(Event.KeyboardEvent("1")))
+            {
+                int charid = int.Parse(Event.current.keyCode.ToString().Substring(5)) + 1;
+                CmdUpdatePlayerCharacter(charid);
+            }
             // colourboxname = GUI.TextField(new Rect(170, 15, 100, 25), colourboxname);
             // if (GUI.Button(new Rect(275, 15, 35, 25), "Set"))
             //     CmdChangeColour(colourboxname);
@@ -187,7 +202,13 @@ public class SetupLocalPlayer : NetworkBehaviour
         GameObject canvas = GameObject.FindWithTag("MainCanvas");
         nameLabel = Instantiate(namePrefab, Vector3.zero, Quaternion.identity) as Text;
         nameLabel.transform.SetParent(canvas.transform);
+
+        health = Instantiate(healthPrebab, Vector3.zero, Quaternion.identity) as Slider;
+        health.transform.SetParent(canvas.transform);
+
+        spawnPos = FindObjectsOfType<NetworkStartPosition>();
     }
+
 
     // Update is called once per frame
     void Update()
@@ -203,49 +224,70 @@ public class SetupLocalPlayer : NetworkBehaviour
             {
                 Vector3 nameLabelPos = Camera.main.WorldToScreenPoint(namePos.position);
                 nameLabel.transform.position = nameLabelPos;
-                // health.transform.position = nameLabelPos + new Vector3(0, 15, 0);
+                health.transform.position = nameLabelPos + new Vector3(0, 15, 0);
             }
             else //otherwise draw it WAY off the screen 
             {
                 nameLabel.transform.position = new Vector3(-1000, -1000, 0);
-                // health.transform.position = new Vector3(-1000, -1000, 0);
+                health.transform.position = new Vector3(-1000, -1000, 0);
             }
+        }
+    }
+
+    public void OnDestroy()
+    {
+        if (nameLabel != null && health != null)
+        {
+            Destroy(nameLabel.gameObject);
+            Destroy(health.gameObject);
         }
     }
 
 
 
 
+    void OnCollisionEnter(Collision collision)
+    {
+
+        if (isLocalPlayer && collision.gameObject.tag == "Bullet")
+        {
+            Debug.Log("Collii");
+            CmdChangeHealth(-5);
+        }
+    }
+
 
     //authoridad
-	/// TRIGGER ZONE START///
+    /// TRIGGER ZONE START///
 
-	public void OnTriggerStay(Collider other)
-	{
-	
-	CmdSetAuthority(other.GetComponent<NetworkIdentity>(), this.GetComponent<NetworkIdentity>());
+    public void OnTriggerStay(Collider other)
+    {
 
-	}
+        CmdSetAuthority(other.GetComponent<NetworkIdentity>(), this.GetComponent<NetworkIdentity>());
 
-	public void OnTriggerExit(Collider other)
-	{
-	
-	CmdRemoveAuthority(other.GetComponent<NetworkIdentity>(), this.GetComponent<NetworkIdentity>());
+    }
 
-	}
-		
+    public void OnTriggerExit(Collider other)
+    {
 
-	/// ASSIGN AND REMOVE CLIENT AUTHORITY///
+        CmdRemoveAuthority(other.GetComponent<NetworkIdentity>(), this.GetComponent<NetworkIdentity>());
 
-	[Command]
-	void CmdSetAuthority (NetworkIdentity grabID, NetworkIdentity playerID) {
-		grabID.AssignClientAuthority (playerID.connectionToClient);
-	}
+    }
 
-	[Command]
-	void CmdRemoveAuthority (NetworkIdentity grabID, NetworkIdentity playerID) {
-		grabID.RemoveClientAuthority (playerID.connectionToClient);
-	}
+
+    /// ASSIGN AND REMOVE CLIENT AUTHORITY///
+
+    [Command]
+    void CmdSetAuthority(NetworkIdentity grabID, NetworkIdentity playerID)
+    {
+        grabID.AssignClientAuthority(playerID.connectionToClient);
+    }
+
+    [Command]
+    void CmdRemoveAuthority(NetworkIdentity grabID, NetworkIdentity playerID)
+    {
+        grabID.RemoveClientAuthority(playerID.connectionToClient);
+    }
 
     //fin authoridad
 
