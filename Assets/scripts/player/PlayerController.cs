@@ -5,7 +5,7 @@ public class PlayerController : MonoBehaviour {
 
 	Rigidbody rb;
     float speed = 20.0F;
-    float rotationSpeed = 50.0F;
+    float rotationSpeed = 100.0F;
 
     void Start(){
         rb = this.GetComponent<Rigidbody>();

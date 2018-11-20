@@ -26,7 +26,7 @@ public class WaveSpawner : NetworkBehaviour
     }
     void Update()
     {
-        if (buildManager.startGame)
+        // if (buildManager.startGame)
         {
             if (countdown <= 0f)
             {
@@ -46,11 +46,12 @@ public class WaveSpawner : NetworkBehaviour
 
         for (int i = 0; i < waveIndex; i++)
         {
+            if(isLocalPlayer)
             CmdSpawnEnemy();
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(1.5f);
         }
     }
-    [Command]
+    [Command]    
     void CmdSpawnEnemy()
     {
         GameObject obj = Instantiate(enemyPrefab, spawnPoint.transform.position, spawnPoint.transform.rotation);

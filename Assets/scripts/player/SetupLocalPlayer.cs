@@ -16,7 +16,10 @@ public class SetupLocalPlayer : NetworkBehaviour
     public Slider healthPrebab;
     public Slider health;
     public GameObject explosion;
+    public GameObject NodesPrefab;
+    public GameObject nodes;
     public GameObject[] Nodes;
+    public bool ChargeNodes=false;
     NetworkStartPosition[] spawnPos;
 
     [SyncVar]
@@ -112,11 +115,11 @@ public class SetupLocalPlayer : NetworkBehaviour
         // if (!isLocalPlayer) return;
 
         buildManager.alreadyPlayer += 1;
-        Debug.Log("RPCGAMESTART");
-        Debug.Log(buildManager.alreadyPlayer);
-        if (buildManager.alreadyPlayer > 1)
+        // Debug.Log("RPCGAMESTART");
+        // Debug.Log(buildManager.alreadyPlayer);
+        // if (buildManager.alreadyPlayer > 1)
             startGame = true;
-        if (startGame)
+        // if (startGame)
             buildManager.startGame = true;
     }
     [Command]
@@ -205,6 +208,8 @@ public class SetupLocalPlayer : NetworkBehaviour
 
         health = Instantiate(healthPrebab, Vector3.zero, Quaternion.identity) as Slider;
         health.transform.SetParent(canvas.transform);
+        if(ChargeNodes)
+        nodes = Instantiate(NodesPrefab, Vector3.zero, Quaternion.identity);
 
         spawnPos = FindObjectsOfType<NetworkStartPosition>();
     }

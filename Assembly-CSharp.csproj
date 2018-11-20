@@ -55,6 +55,7 @@
   <ItemGroup>
      <Compile Include="Assets\BuildManager.cs" />
      <Compile Include="Assets\CameraController.cs" />
+     <Compile Include="Assets\CollisionNode.cs" />
      <Compile Include="Assets\FireControl.cs" />
      <Compile Include="Assets\LeapMotion\Core\Examples\Example Assets\InertiaPostProcessProvider.cs" />
      <Compile Include="Assets\LeapMotion\Core\Examples\Example Assets\ProjectionPostProcessProvider.cs" />

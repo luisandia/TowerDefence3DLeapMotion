@@ -580,6 +580,9 @@ MonoBehaviour:
     type: 2}
   health: {fileID: 0}
   explosion: {fileID: 1926797599904716, guid: 1f84bcc4d72659544aa1412b524da1a1, type: 2}
+  NodesPrefab: {fileID: 1930254539614344, guid: d3712e4fb2d1bf54894e6cb856f9fc8a,
+    type: 2}
+  nodes: {fileID: 0}
   Nodes:
   - {fileID: 0}
   - {fileID: 0}
@@ -818,7 +821,7 @@ MonoBehaviour:
   enemyPrefab: {fileID: 1433811563518390, guid: ec8d15e4e6a7ce345abfba85f878c90e,
     type: 2}
   spawnPoint: {fileID: 1854693964478714, guid: 7bf1b2047e4cee54c983f4234df1f6cd, type: 2}
-  timeBetweenWaves: 5
+  timeBetweenWaves: 20
   waveCountdownText: {fileID: 0}
 --- !u!114 &114605836520050388
 MonoBehaviour:
