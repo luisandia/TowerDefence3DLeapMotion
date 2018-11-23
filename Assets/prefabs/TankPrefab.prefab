@@ -783,6 +783,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  ChargeNodes: 0
   startGame: 0
   pName: player
   healthValue: 100
@@ -821,7 +822,7 @@ MonoBehaviour:
   enemyPrefab: {fileID: 1433811563518390, guid: ec8d15e4e6a7ce345abfba85f878c90e,
     type: 2}
   spawnPoint: {fileID: 1854693964478714, guid: 7bf1b2047e4cee54c983f4234df1f6cd, type: 2}
-  timeBetweenWaves: 20
+  timeBetweenWaves: 5
   waveCountdownText: {fileID: 0}
 --- !u!114 &114605836520050388
 MonoBehaviour:

@@ -254,7 +254,7 @@ public class SetupLocalPlayer : NetworkBehaviour
     void OnCollisionEnter(Collision collision)
     {
 
-        if (isLocalPlayer && collision.gameObject.tag == "Bullet")
+        if (isLocalPlayer && collision.gameObject.tag == "Enemy")
         {
             Debug.Log("Collii");
             CmdChangeHealth(-5);

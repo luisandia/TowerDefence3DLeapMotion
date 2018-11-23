@@ -20,10 +20,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4910076207215392}
   - component: {fileID: 114431782237917134}
-  - component: {fileID: 114305782609020492}
   - component: {fileID: 114103233257091494}
   - component: {fileID: 114931795877618880}
-  - component: {fileID: 54499810984358716}
+  - component: {fileID: 114053048368460764}
+  - component: {fileID: 54360353307978226}
   m_Layer: 0
   m_Name: LeapMotionPlayer
   m_TagString: Untagged
@@ -143,6 +143,7 @@ GameObject:
   - component: {fileID: 4130150933836722}
   - component: {fileID: 114711960826559160}
   - component: {fileID: 114140219575955690}
+  - component: {fileID: 65387137712854052}
   m_Layer: 0
   m_Name: Leap Motion Controller
   m_TagString: Untagged
@@ -157,7 +158,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1897555908487700}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: -1, z: 0}
   m_LocalScale: {x: 20, y: 20, z: 20}
   m_Children: []
   m_Father: {fileID: 4910076207215392}
@@ -210,7 +211,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1449501244338704}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 3.92, z: 0}
+  m_LocalPosition: {x: 0, y: -1.63, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4910076207215392}
@@ -238,7 +239,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1123624602437802}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 19.2028, y: 0.5, z: 60.652447}
+  m_LocalPosition: {x: 67.95015, y: 0.5, z: 61.864265}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4130150933836722}
@@ -303,7 +304,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1449501244338704}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!54 &54499810984358716
+--- !u!54 &54360353307978226
 Rigidbody:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
@@ -318,6 +319,34 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &65387137712854052
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1897555908487700}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 0.15519638, y: 0.16276942, z: 0.117670916}
+  m_Center: {x: 0.006709671, y: 0.18243022, z: 0.021284724}
+--- !u!114 &114053048368460764
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1123624602437802}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b690e3763fe3a6b4cb083884a366d2f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyPrefab: {fileID: 1888545366952844, guid: a45cfbd38a35c524883b20675b9ab647,
+    type: 2}
+  spawnPoint: {fileID: 1161678546066068, guid: 3cd458c9bf3249a42873ab8aae4c616a, type: 2}
+  timeBetweenWaves: 5
+  waveCountdownText: {fileID: 0}
 --- !u!114 &114055922092322012
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -348,13 +377,13 @@ MonoBehaviour:
     type: 2}
   health: {fileID: 0}
   explosion: {fileID: 1926797599904716, guid: 1f84bcc4d72659544aa1412b524da1a1, type: 2}
-  NodesPrefab: {fileID: 1930254539614344, guid: d3712e4fb2d1bf54894e6cb856f9fc8a,
+  NodesPrefab: {fileID: 1230079342081140, guid: 55453975b6657d344b84f7c96d319163,
     type: 2}
   nodes: {fileID: 0}
   Nodes: []
   ChargeNodes: 1
   startGame: 0
-  pName: player
+  pName: LeapMotion
   healthValue: 100
 --- !u!114 &114140219575955690
 MonoBehaviour:
@@ -419,20 +448,6 @@ MonoBehaviour:
     IsRightToBeSpawned: 0
     IsEnabled: 1
     CanDuplicate: 1
---- !u!114 &114305782609020492
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1123624602437802}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2edcfe7c610b8bf42a707b995ff27ec0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  distance: 2
-  height: 1
-  lookOffset: {x: 0, y: 1, z: 0}
 --- !u!114 &114343787342821826
 MonoBehaviour:
   m_ObjectHideFlags: 1
