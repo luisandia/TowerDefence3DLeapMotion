@@ -5,15 +5,56 @@ public class Enemy : NetworkBehaviour
 {
 
 
-    public float speed = 10f;
+    public float speed = 3.5f;
 
 
     private Transform target;
     private int wavepointIndex = 0;
+
+    public float[] wavePointAngle;
     // private bool startGame = false;
     public int orientation = 0;
+
+    void initAngles()
+    {
+        wavePointAngle = new float[15];
+        if(orientation == 0)
+        {
+            wavePointAngle[0] = 90f;
+            wavePointAngle[1] = 90f;
+            wavePointAngle[2] = -90f;
+            wavePointAngle[3] = -90f;
+            wavePointAngle[4] = -90f;
+            wavePointAngle[5] = 90f;
+            wavePointAngle[6] = 90f;
+            wavePointAngle[7] = 90f;
+            wavePointAngle[8] = -90f;
+            wavePointAngle[9] = 90f;
+            wavePointAngle[10] = -90f;
+            wavePointAngle[11] = -90f;
+            wavePointAngle[12] = -90f;
+        }
+        else
+        {
+            wavePointAngle[0] = -90f;
+            wavePointAngle[1] = -90f;
+            wavePointAngle[2] = 90f;
+            wavePointAngle[3] = 90f;
+            wavePointAngle[4] = 90f;
+            wavePointAngle[5] = -90f;
+            wavePointAngle[6] = -90f;
+            wavePointAngle[7] = -90f;
+            wavePointAngle[8] = 90f;
+            wavePointAngle[9] = -90f;
+            wavePointAngle[10] = 90f;
+            wavePointAngle[11] = 90f;
+            wavePointAngle[12] = 90f;
+        }
+    }
     void Start()
     {
+        initAngles();
+        transform.Rotate(Vector3.up, -90f, Space.World);
         switch (orientation)
         {
 
@@ -47,6 +88,10 @@ public class Enemy : NetworkBehaviour
 
         if (Vector3.Distance(transform.position, target.position) <= 0.4f)
         {
+            float angle = Vector3.Angle(transform.position, target.position);
+            transform.Rotate(Vector3.up, wavePointAngle[wavepointIndex], Space.World);
+            Debug.LogWarning("El angulo del enemigo contra el target es: ");
+            Debug.LogWarning(angle);
             GetNextWaypoint();
         }
 

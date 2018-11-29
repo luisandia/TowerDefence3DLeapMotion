@@ -819,10 +819,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b690e3763fe3a6b4cb083884a366d2f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefab: {fileID: 1433811563518390, guid: ec8d15e4e6a7ce345abfba85f878c90e,
+  enemyPrefab: {fileID: 1915140057650676, guid: 08bfd9fe42086664c9b6bad5cdf53880,
     type: 2}
   spawnPoint: {fileID: 1854693964478714, guid: 7bf1b2047e4cee54c983f4234df1f6cd, type: 2}
-  timeBetweenWaves: 5
+  timeBetweenWaves: 15
   waveCountdownText: {fileID: 0}
 --- !u!114 &114605836520050388
 MonoBehaviour:
