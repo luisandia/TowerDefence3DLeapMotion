@@ -14,6 +14,7 @@ public class Enemy : NetworkBehaviour
     public float[] wavePointAngle;
     // private bool startGame = false;
     public int orientation = 0;
+    public GameObject explosion;
 
     void initAngles()
     {
@@ -77,6 +78,10 @@ public class Enemy : NetworkBehaviour
             Debug.Log("Enemyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy");
             Destroy(collision.gameObject);
             Destroy(this.gameObject);
+                        GameObject e = Instantiate(explosion, this.transform.position, Quaternion.identity);
+            NetworkServer.Spawn(e);
+            // GameObject e = Instantiate(explosion, this.transform.position, Quaternion.identity);
+
             // CmdChangeHealth(-5);
         }
     }

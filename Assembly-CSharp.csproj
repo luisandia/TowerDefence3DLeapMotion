@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{AF87E4A3-EBF9-9167-4C2A-7A3E0DC9EFD5}</ProjectGuid>
+    <ProjectGuid>{CC146949-C821-D5E0-6BA0-9023BD436C58}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -56,7 +56,11 @@
      <Compile Include="Assets\BuildManager.cs" />
      <Compile Include="Assets\CameraController.cs" />
      <Compile Include="Assets\CollisionNode.cs" />
+     <Compile Include="Assets\Fantasy Skybox FREE\Demo\Scripts\GE_FantasySkyboxFREE_Demo.cs" />
+     <Compile Include="Assets\Fantasy Skybox FREE\Demo\Scripts\GE_FantasySkyboxFREE_UIs.cs" />
      <Compile Include="Assets\FireControl.cs" />
+     <Compile Include="Assets\GE Common Assets\GE Toggle Full Screen\Scripts\GE_ToggleFullScreenUI.cs" />
+     <Compile Include="Assets\GE Common Assets\Scripts\GE_UIResponder.cs" />
      <Compile Include="Assets\LeapMotion\Core\Examples\Example Assets\InertiaPostProcessProvider.cs" />
      <Compile Include="Assets\LeapMotion\Core\Examples\Example Assets\ProjectionPostProcessProvider.cs" />
      <Compile Include="Assets\LeapMotion\Core\Plugins\LeapCSharp\Arm.cs" />
@@ -306,39 +310,58 @@
      <Compile Include="Assets\LeapMotion\Modules\InteractionEngine\Scripts\Utility\IgnoreCollisionsInChildren.cs" />
      <Compile Include="Assets\LeapMotion\Modules\InteractionEngine\Scripts\Utility\KabschSolver.cs" />
      <Compile Include="Assets\LeapMotion\Modules\InteractionEngine\Scripts\Utility\PhysicsCallbacks.cs" />
+     <Compile Include="Assets\Lobby\Scripts\DraggablePanel.cs" />
+     <Compile Include="Assets\Lobby\Scripts\EventSystemChecker.cs" />
+     <Compile Include="Assets\Lobby\Scripts\Lobby\LobbyCountdownPanel.cs" />
+     <Compile Include="Assets\Lobby\Scripts\Lobby\LobbyHook.cs" />
+     <Compile Include="Assets\Lobby\Scripts\Lobby\LobbyInfoPanel.cs" />
+     <Compile Include="Assets\Lobby\Scripts\Lobby\LobbyMainMenu.cs" />
+     <Compile Include="Assets\Lobby\Scripts\Lobby\LobbyManager.cs" />
+     <Compile Include="Assets\Lobby\Scripts\Lobby\LobbyPlayer.cs" />
+     <Compile Include="Assets\Lobby\Scripts\Lobby\LobbyPlayerList.cs" />
+     <Compile Include="Assets\Lobby\Scripts\Lobby\LobbyServerEntry.cs" />
+     <Compile Include="Assets\Lobby\Scripts\Lobby\LobbyServerList.cs" />
+     <Compile Include="Assets\Lobby\Scripts\Lobby\LobbyTopPanel.cs" />
      <Compile Include="Assets\scripts\Bullet.cs" />
      <Compile Include="Assets\scripts\Enemy.cs" />
      <Compile Include="Assets\scripts\Node.cs" />
      <Compile Include="Assets\scripts\player\CameraFollow360.cs" />
      <Compile Include="Assets\scripts\player\CustomNetworkManager.cs" />
-     <Compile Include="Assets\scripts\player\PlayerController.cs" />
+     <Compile Include="Assets\scripts\player\MyPlayerController.cs" />
      <Compile Include="Assets\scripts\player\SetupLocalPlayer.cs" />
      <Compile Include="Assets\scripts\Turret.cs" />
      <Compile Include="Assets\scripts\WaveSpawner.cs" />
      <Compile Include="Assets\scripts\Waypoints.cs" />
      <Compile Include="Assets\scripts\WaypointsRight.cs" />
      <Compile Include="Assets\Shop.cs" />
+     <None Include="Assets\NetworkLobby_Third-PartyNotice.txt" />
+     <None Include="Assets\Fantasy Skybox FREE\Readme.txt" />
      <None Include="Assets\LeapMotion\Core\Resources\LeapCG.cginc" />
      <None Include="Assets\LeapMotion\Core\README_BEFORE_UPDATING.txt" />
+     <None Include="Assets\Lobby\Documentation.txt" />
      <None Include="Assets\LeapMotion\Core\readme.txt" />
+     <None Include="Assets\Lobby\Instruction.txt" />
      <None Include="Assets\LeapMotion\Core\Shaders\RuntimeGizmos.shader" />
+     <None Include="Assets\Fantasy Skybox FREE\Fog and Ambient references.txt" />
      <None Include="Assets\LeapMotion\Core\Dependencies.txt" />
      <None Include="Assets\LeapMotion\Core\Shaders\ThresholdOverlay.shader" />
      <None Include="Assets\LeapMotion\Core\Shaders\PassthroughForeground.shader" />
+     <None Include="Assets\Fonts\OpenSans\FontLicense.txt" />
      <None Include="Assets\LeapMotion\Core\Shaders\PassthroughBackground.shader" />
      <None Include="Assets\LeapMotion\Core\Version.txt" />
+     <None Include="Assets\GE Common Assets\Readme.txt" />
      <None Include="Assets\LeapMotion\Core\Shaders\VertexOffsetShader.shader" />
  <Reference Include="UnityEditor.StandardEvents">
- <HintPath>C:/Users/Joaquin/lucho/TowerDefence3DLeapMotion/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
+ <HintPath>E:/luis/unity/TowerDefence3DOriginal/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
  </Reference>
  <Reference Include="Unity.TextMeshPro.Editor">
- <HintPath>C:/Users/Joaquin/lucho/TowerDefence3DLeapMotion/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
+ <HintPath>E:/luis/unity/TowerDefence3DOriginal/Library/ScriptAssemblies/Unity.TextMeshPro.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.PackageManagerUI.Editor">
- <HintPath>C:/Users/Joaquin/lucho/TowerDefence3DLeapMotion/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
+ <HintPath>E:/luis/unity/TowerDefence3DOriginal/Library/ScriptAssemblies/Unity.PackageManagerUI.Editor.dll</HintPath>
  </Reference>
  <Reference Include="Unity.TextMeshPro">
- <HintPath>C:/Users/Joaquin/lucho/TowerDefence3DLeapMotion/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
+ <HintPath>E:/luis/unity/TowerDefence3DOriginal/Library/ScriptAssemblies/Unity.TextMeshPro.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.AIModule">
  <HintPath>C:/Program Files/Unity/Editor/Data/Managed/UnityEngine/UnityEngine.AIModule.dll</HintPath>
@@ -529,9 +552,6 @@
  <Reference Include="UnityEngine.Networking">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/Networking/UnityEngine.Networking.dll</HintPath>
  </Reference>
- <Reference Include="Vuforia.UnityExtensions">
- <HintPath>C:/Program Files/Unity/Editor/Data/PlaybackEngines/VuforiaSupport/Managed/Runtime/Vuforia.UnityExtensions.dll</HintPath>
- </Reference>
  <Reference Include="UnityEngine.GoogleAudioSpatializer">
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnityGoogleAudioSpatializer/RuntimeEditor/UnityEngine.GoogleAudioSpatializer.dll</HintPath>
  </Reference>
@@ -542,13 +562,13 @@
  <HintPath>C:/Program Files/Unity/Editor/Data/UnityExtensions/Unity/UnitySpatialTracking/RuntimeEditor/UnityEngine.SpatialTracking.dll</HintPath>
  </Reference>
  <Reference Include="InteractionEngineUtility">
- <HintPath>C:/Users/Joaquin/lucho/TowerDefence3DLeapMotion/Assets/LeapMotion/Modules/InteractionEngine/Plugins/InteractionEngineUtility.dll</HintPath>
+ <HintPath>E:/luis/unity/TowerDefence3DOriginal/Assets/LeapMotion/Modules/InteractionEngine/Plugins/InteractionEngineUtility.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.Analytics">
- <HintPath>C:/Users/Joaquin/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.analytics@2.0.16/UnityEngine.Analytics.dll</HintPath>
+ <HintPath>C:/Users/Usuario/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.analytics@2.0.16/UnityEngine.Analytics.dll</HintPath>
  </Reference>
  <Reference Include="UnityEngine.StandardEvents">
- <HintPath>C:/Users/Joaquin/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.standardevents@1.0.13/UnityEngine.StandardEvents.dll</HintPath>
+ <HintPath>C:/Users/Usuario/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.standardevents@1.0.13/UnityEngine.StandardEvents.dll</HintPath>
  </Reference>
  <Reference Include="mscorlib">
  <HintPath>C:/Program Files/Unity/Editor/Data/MonoBleedingEdge/lib/mono/unity/mscorlib.dll</HintPath>

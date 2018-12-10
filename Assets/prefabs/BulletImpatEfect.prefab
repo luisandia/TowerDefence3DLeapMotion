@@ -21,6 +21,7 @@ GameObject:
   - component: {fileID: 4075160293584152}
   - component: {fileID: 198006444151591430}
   - component: {fileID: 199540739514747750}
+  - component: {fileID: 114402870426802104}
   m_Layer: 0
   m_Name: BulletImpatEfect
   m_TagString: Untagged
@@ -41,6 +42,38 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
+--- !u!114 &114402870426802104
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1926797599904716}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 372142912, guid: dc443db3e92b4983b9738c1131f555cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SceneId:
+    m_Value: 0
+  m_AssetId:
+    i0: 31
+    i1: 132
+    i2: 188
+    i3: 196
+    i4: 215
+    i5: 38
+    i6: 89
+    i7: 84
+    i8: 74
+    i9: 161
+    i10: 65
+    i11: 43
+    i12: 82
+    i13: 77
+    i14: 161
+    i15: 161
+  m_ServerOnly: 0
+  m_LocalPlayerAuthority: 0
 --- !u!198 &198006444151591430
 ParticleSystem:
   m_ObjectHideFlags: 1

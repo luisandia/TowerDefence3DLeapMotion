@@ -649,6 +649,7 @@ GameObject:
   - component: {fileID: 114854423413287726}
   - component: {fileID: 23733514697844848}
   - component: {fileID: 136663749797221462}
+  - component: {fileID: 65845541173141496}
   m_Layer: 0
   m_Name: Clanker
   m_TagString: Enemy
@@ -968,7 +969,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1743855488236268}
   m_LocalRotation: {x: 0, y: -0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 104.3823, y: 0.35, z: 69.01}
+  m_LocalPosition: {x: 81.21, y: 0.5, z: 28.741074}
   m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_Children:
   - {fileID: 4827723819853750}
@@ -1868,6 +1869,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1999262639637054}
   m_Mesh: {fileID: 4300008, guid: 001578fe978d8ad48be8a52fd006de0e, type: 3}
+--- !u!65 &65845541173141496
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1743855488236268}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 8.792053, y: 11.118866, z: 12.278787}
+  m_Center: {x: 0.39372993, y: 5.0594325, z: 1.8321918}
 --- !u!95 &95162898878960292
 Animator:
   serializedVersion: 3
@@ -1947,9 +1960,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5ffd1c8dd44d65418278a737cad542c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3.5
+  speed: 10
   wavePointAngle: []
   orientation: 1
+  explosion: {fileID: 1926797599904716, guid: 1f84bcc4d72659544aa1412b524da1a1, type: 2}
 --- !u!136 &136663749797221462
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -1958,7 +1972,7 @@ CapsuleCollider:
   m_GameObject: {fileID: 1743855488236268}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   m_Radius: 0.5
   m_Height: 1
   m_Direction: 1

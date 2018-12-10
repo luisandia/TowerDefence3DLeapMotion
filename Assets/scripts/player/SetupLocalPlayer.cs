@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;
-
+using Prototype.NetworkLobby;
 public class SetupLocalPlayer : NetworkBehaviour
 {
 
@@ -147,7 +147,7 @@ public class SetupLocalPlayer : NetworkBehaviour
     [Command]
     public void CmdUpdatePlayerCharacter(int cid)
     {
-        NetworkManager.singleton.GetComponent<CustomNetworkManager>().SwitchPlayer(this, cid);
+        NetworkManager.singleton.GetComponent<LobbyManager>().SwitchPlayer(this, cid);
     }
 
 
@@ -194,12 +194,12 @@ public class SetupLocalPlayer : NetworkBehaviour
 
 
 
-            GetComponent<PlayerController>().enabled = true;
+            GetComponent<MyPlayerController>().enabled = true;
             CameraFollow360.player = this.gameObject.transform;
         }
         else
         {
-            GetComponent<PlayerController>().enabled = false;
+            GetComponent<MyPlayerController>().enabled = false;
         }
         buildManager = BuildManager.instance;
         GameObject canvas = GameObject.FindWithTag("MainCanvas");
