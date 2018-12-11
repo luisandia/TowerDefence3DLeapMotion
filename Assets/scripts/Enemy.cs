@@ -19,7 +19,7 @@ public class Enemy : NetworkBehaviour
     void initAngles()
     {
         wavePointAngle = new float[15];
-        if(orientation == 0)
+        if (orientation == 0)
         {
             wavePointAngle[0] = 90f;
             wavePointAngle[1] = 90f;
@@ -78,7 +78,7 @@ public class Enemy : NetworkBehaviour
             Debug.Log("Enemyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyyy");
             Destroy(collision.gameObject);
             Destroy(this.gameObject);
-                        GameObject e = Instantiate(explosion, this.transform.position, Quaternion.identity);
+            GameObject e = Instantiate(explosion, this.transform.position, Quaternion.identity);
             NetworkServer.Spawn(e);
             // GameObject e = Instantiate(explosion, this.transform.position, Quaternion.identity);
 
@@ -110,6 +110,12 @@ public class Enemy : NetworkBehaviour
                 if (wavepointIndex >= Waypoints.points.Length - 1)
                 {
                     Destroy(gameObject);
+                    GameObject jugador = GameObject.FindWithTag("Jugador");
+                    if (jugador)
+                        jugador.GetComponent<SetupLocalPlayer>().CmdChangeHealth(-5);
+                    GameObject jugadorleap = GameObject.FindWithTag("JugadorLeapMotion");
+                    if (jugadorleap)
+                        jugadorleap.GetComponent<SetupLocalPlayer>().CmdChangeHealth(-5);
                     return;
                 }
 
@@ -120,6 +126,12 @@ public class Enemy : NetworkBehaviour
                 if (wavepointIndex >= WaypointsRight.points.Length - 1)
                 {
                     Destroy(gameObject);
+                    GameObject jugador = GameObject.FindWithTag("Jugador");
+                    if (jugador)
+                        jugador.GetComponent<SetupLocalPlayer>().CmdChangeHealth(-5);
+                    GameObject jugadorleap = GameObject.FindWithTag("JugadorLeapMotion");
+                    if (jugadorleap)
+                        jugadorleap.GetComponent<SetupLocalPlayer>().CmdChangeHealth(-5);
                     return;
                 }
 

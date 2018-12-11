@@ -89,8 +89,9 @@ public class SetupLocalPlayer : NetworkBehaviour
             GameObject e = Instantiate(explosion, this.transform.position, Quaternion.identity);
             NetworkServer.Spawn(e);
             this.GetComponent<Rigidbody>().velocity = Vector3.zero;
-            RpcRespawn();
-            healthValue = 100;
+            Destroy(this.gameObject);
+            // RpcRespawn();
+            // healthValue = 100;
         }
     }
 
