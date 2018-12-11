@@ -4,7 +4,7 @@ using UnityEngine;
 using Leap.Unity.Interaction;
 using UnityEngine.EventSystems;
 using UnityEngine.Networking;
-
+using Leap.Unity;
 public class CollisionNode : NetworkBehaviour
 {
 
@@ -31,7 +31,7 @@ public class CollisionNode : NetworkBehaviour
 
     }
 
-	    void createTurret()
+    void createTurret()
     {
         buildManager = BuildManager.instance;
         // if (EventSystem.current.IsPointerOverGameObject())
@@ -86,6 +86,19 @@ public class CollisionNode : NetworkBehaviour
     private void OnPostPhysics()
     {
         InteractionBehaviour intObjEnemy = gameObject.GetComponent<InteractionBehaviour>();
+        // InteractionHand controller = gameObject.GetComponent<InteractionHand>();
+        // Frame frame = gameObject.GetComponent<Frame>();
+        // Frame frame = controller.Frame (); // controller is a Controller object
+
+        
+
+// Debug.LogError(controller);
+        // if (frame.Hands.Count > 0)
+        // {
+        //     Debug.Log("FUNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNn");
+        //     List<Hand> hands = frame.Hands;
+        //     Hand firstHand = hands[0];
+        // }
         if (intObjEnemy.isPrimaryHovered)
         {
 
@@ -106,14 +119,15 @@ public class CollisionNode : NetworkBehaviour
             if (turret != null)
             {
                 Debug.Log("Can't build there! - TODO: Display on screen.");
+                Destroy(turret);
                 return;
             }
 
             GameObject turretToBuild = buildManager.GetTurretToBuild();
             turret = (GameObject)Instantiate(turretToBuild, transform.position + positionOffset, transform.rotation);
-        NetworkServer.Spawn(turret);
-		// CmdCreateTurret();
-		}
+            NetworkServer.Spawn(turret);
+            // CmdCreateTurret();
+        }
     }
 
 
